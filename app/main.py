@@ -26,7 +26,3 @@ def create_app() -> FastAPI:
     return app
 
 app = create_app()
-
-@app.get("/info")
-async def info():
-    return {"name": "FastAPI Service", "environment": "development"}
