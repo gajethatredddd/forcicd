@@ -4,7 +4,11 @@ router = APIRouter()
 
 @router.get("/health",tags =["Здоровье"],summary = ["Проверить жив ли сервис"],include_in_schema=True)
 async def health_check():
-    return {"status": "healthy"}
+<<<<<<< HEAD
+    return {"status": True}
+=======
+    return {"status": False}
+>>>>>>> Py_git
 
 
 @router.get("/test/division-by-zero",tags =["ОШИБКИ"],summary = ["Деление на ноль"])
