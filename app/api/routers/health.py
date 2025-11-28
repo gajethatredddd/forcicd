@@ -1,12 +1,14 @@
 from fastapi import APIRouter
-from app.core.exceptions import CustomException
 
 router = APIRouter()
 
-@router.get("/health", include_in_schema=True)
+@router.get("/health",tags =["Здоровье"],summary = ["Проверить жив ли сервис"],include_in_schema=True)
 async def health_check():
     return {"status": "ok"}
 
-@router.get("/raise_custom_error")
-async def raise_custom_error():
-    raise CustomException("кастомная ошибка", status_code=418)
+
+@router.get("/test/division-by-zero",tags =["ОШИБКИ"],summary = ["Деление на ноль"])
+async def division_by_zero():
+    result = 1 / 0
+    return {"result": result}
+

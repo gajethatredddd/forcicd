@@ -6,7 +6,6 @@ app = create_app()
 client = TestClient(app)
 
 def test_custom_exception_handling():
-    # временно добавим маршрут, который поднимет CustomException
     @app.get("/raise_custom")
     async def raise_custom():
         raise CustomException("boom", status_code=418)

@@ -16,4 +16,4 @@ def test_send_message_success(monkeypatch):
         "image_id": "123"
     })
     assert response.status_code == 200
-    assert response.json()["status"] == "ok"
+    assert response.json()["status"] == "ок"

@@ -15,7 +15,7 @@ class MessageService:
         self.use_ssl = settings.MAIL_SSL
         self.use_tls = settings.MAIL_TLS
 
-        # Базовый URL внешнего API
+        # URL внешнего API
         self.external_api_base = "http://web:8000/api/v1/lol"
 
     def fetch_text_from_external_api(self, image_id: str) -> str:
@@ -62,4 +62,3 @@ class MessageService:
                 server.login(self.smtp_user, self.smtp_password)
                 server.send_message(msg)
 
-        print(f"Email sent to {to_email} with subject '{subject}'")

@@ -11,7 +11,7 @@ def test_send_message_endpoint(monkeypatch):
     app = create_app()
     client = TestClient(app)
 
-    # Подменим delay метода celery task
+    # delay метода celery task
     def fake_delay(to_email, image_id):
         return True
 
@@ -20,8 +20,8 @@ def test_send_message_endpoint(monkeypatch):
 
     resp = client.post("/api/send_message_to_email", json={
         "to_email": "tt@example.com",
-        "image_id": "abc"
+        "image_id": "1"
     })
 
     assert resp.status_code == 200
-    assert resp.json()["status"] == "ok"
+    assert resp.json()["status"] == "ок"

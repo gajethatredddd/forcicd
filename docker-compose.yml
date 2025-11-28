@@ -1,12 +1,10 @@
-version: "3.8"
-
 services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: fastapi_rabbitmq
     ports:
-      - "5672:5672"     # AMQP (Celery)
-      - "15672:15672"   # Web UI
+      - "5672:5672"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: user
       RABBITMQ_DEFAULT_PASS: password
@@ -21,7 +19,7 @@ services:
   fastapi:
     build: .
     container_name: fastapi_app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8001
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
     ports:
       - "8001:8001"
     volumes:

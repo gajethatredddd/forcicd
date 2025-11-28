@@ -4,7 +4,7 @@ from app.services.message_service import MessageService
 
 # Инициализация Celery с RabbitMQ
 celery_app = Celery(
-    "tasks",
+    "Сельдерей",
     broker=settings.CELERY_BROKER_URL,
     backend=settings.CELERY_BACKEND_URL,
 )
@@ -26,7 +26,7 @@ def send_email_task(to_email: str, image_id: str):
     subject = f"Всё чётко {image_id}"
     body = f"Картинка {image_id} успешно обработана.\n\nИзвлечённый текст:\n\n{extracted_text}"
 
-    # 3. Отправка email — уже внутри MessageService
+    # 3. Отправка email
     service.send_email(
         to_email=to_email,
         subject=subject,
@@ -34,7 +34,7 @@ def send_email_task(to_email: str, image_id: str):
     )
 
     return {
-        "status": "sent",
+        "status": "отправлено",
         "email": to_email,
         "image_id": image_id
     }

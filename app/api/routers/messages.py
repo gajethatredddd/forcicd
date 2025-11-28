@@ -11,7 +11,9 @@ MessageServiceDep = Annotated[MessageService, Depends(get_message_service)]
 
 @router.post(
     "/send_message_to_email",
-    response_model=SendMessageResponse
+    response_model=SendMessageResponse,
+    tags =["Отправка письма"],
+    summary = ["Основная ручка отправки"]
 )
 async def send_message(
     request: SendMessageRequest,
@@ -20,8 +22,8 @@ async def send_message(
     try:
         send_email_task.delay(request.to_email, request.image_id)
         return SendMessageResponse(
-            status="ok",
-            message="Email task scheduled"
+            status="ок",
+            message="таска запущена"
         )
     except Exception as e:
         raise HTTPException(status_code=422, detail=str(e))
