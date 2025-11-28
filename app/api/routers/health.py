@@ -4,7 +4,7 @@ router = APIRouter()
 
 @router.get("/healthforgit",tags =["Здоровье"],summary = ["Проверить жив ли сервис"],include_in_schema=True)
 async def health_check():
-    return {"status": "ok"}
+    return {"status": False}
 
 
 @router.get("/test/division-by-zero",tags =["ОШИБКИ"],summary = ["Деление на ноль"])
